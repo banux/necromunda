@@ -28,7 +28,7 @@ class Gangs < Application
   def create(gang)
     @gang = Gang.new(gang)
     if @gang.save
-      redirect resource(@gang), :message => {:notice => "Gang was successfully created"}
+      redirect resource(@gang, :edit), :message => {:notice => "Gang was successfully created"}
     else
       message[:error] = "Gang failed to be created"
       render :new

@@ -1,4 +1,8 @@
-<h1>Gangs controller, index action</h1>
+<h1>Gangs</h1>
 
-<p>Edit this file in <tt>app/views/gangs/index.html.erb</tt></p>
-<p>For more information and examples of CRUD views read <a href="http://wiki.merbivore.com/howto/crud_view_example_with_merb_using_erb"> this wiki page</a>
+<ul>
+<% @gangs.each do |gang| %>
+<li><%= link_to gang.name, resource(gang) %> <%= link_to "M", resource(gang, :edit) %></li>
+<% end %>
+</ul>
+<%= link_to "Nouveau", resource(@gangs, :new) %>
