@@ -15,6 +15,7 @@ class Gangers < Application
   def new
     only_provides :html
     @ganger = Ganger.new
+    @gang = Gang.get(params[:gang_id])
     display @ganger
   end
 
@@ -28,6 +29,10 @@ class Gangers < Application
   def create(ganger)
     @ganger = Ganger.new(ganger)
     if @ganger.save
+      ganger_gang = GangerGang.new
+      ganger_gang.gang_id = params[:gang_id]
+      ganger_gang.ganger_id =  @ganger.id
+      ganger_gang.save
       redirect resource(@ganger), :message => {:notice => "Ganger was successfully created"}
     else
       message[:error] = "Ganger failed to be created"

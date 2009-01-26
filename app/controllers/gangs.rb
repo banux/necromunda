@@ -21,6 +21,7 @@ class Gangs < Application
   def edit(id)
     only_provides :html
     @gang = Gang.get(id)
+    @ganger = Ganger.new
     raise NotFound unless @gang
     display @gang
   end

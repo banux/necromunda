@@ -17,4 +17,6 @@ class Ganger
   property :equipment, Text
   property :i, Integer
 
+  has 1, :ganger_gangs
+  has 1, :gangs, :through => :ganger_gangs
 end

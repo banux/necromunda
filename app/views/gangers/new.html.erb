@@ -1,4 +1,25 @@
-<h1>Gangers controller, new action</h1>
+<h1>Nouveau ganger pour <%= @gang.name %> </h1>
 
-<p>Edit this file in <tt>app/views/gangers/new.html.erb</tt></p>
-<p>For more information and examples of CRUD views read <a href="http://wiki.merbivore.com/howto/crud_view_example_with_merb_using_erb"> this wiki page</a>
+<%= form_for(@ganger, :action => resource(:gangers) ) do %>
+<%= hidden_field :name => :gang_id, :value => @gang.id %>
+  <p>
+     <%= text_field :name, :label => "Nom" %>
+
+  </p>
+
+  <p>
+     <%= text_area :name, :label => "Equipement" %>
+  </p>
+
+  <p>
+    <%= text_field :xp, :label => "XP" %>
+  <p>
+
+  <p>
+    <%= text_field :cost, :label => "Cout" %>
+  <p>
+
+
+  <%= submit "Créer" %>
+          </p>
+<% end =%>

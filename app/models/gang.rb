@@ -11,6 +11,6 @@ class Gang
 
   has n, :ganger_gangs
   has n, :gang_territories
-  has n, :gangers, :through => :ganger_gan
-  has n, :territories, :through => :gang_territories
+  has n, :gangers, :through => :ganger_gangs
+#  has n, :territories, :through => :gang_territories
 end
