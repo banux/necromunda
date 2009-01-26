@@ -31,6 +31,7 @@ Merb::Router.prepare do
   resources :territories
   resources :gangs do
     resources :gangers
+    member :add_territory, :method => :post
   end
   # RESTful routes
   # resources :posts

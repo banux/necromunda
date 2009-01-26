@@ -1,25 +1,60 @@
 <h1>Nouveau ganger pour <%= @gang.name %> </h1>
 
 <%= form_for(@ganger, :action => resource(:gangers) ) do %>
-<%= hidden_field :name => :gang_id, :value => @gang.id %>
+  <%= hidden_field :name => :gang_id, :value => @gang.id %>
   <p>
-     <%= text_field :name, :label => "Nom" %>
+    <%= text_field :name, :label => "Nom" %>
 
   </p>
 
   <p>
-     <%= text_area :name, :label => "Equipement" %>
+    <%= text_area :equipment, :label => "Equipement" %>
   </p>
 
   <p>
-    <%= text_field :xp, :label => "XP" %>
+  <%= text_field :xp, :label => "XP" %>
   <p>
 
   <p>
-    <%= text_field :cost, :label => "Cout" %>
+  <%= text_field :cost, :label => "Cout" %>
   <p>
 
+    <p>
+      <%= text_field :m, :label => "M" %>
+    </p>
 
-  <%= submit "Créer" %>
-          </p>
+    <p>
+      <%= text_field :cc, :label => "CC" %>
+    </p>
+  
+    <p>
+      <%= text_field :ct, :label => "CT" %>
+    </p>
+  
+    <p>
+      <%= text_field :f, :label => "Force" %>
+    </p>
+  
+    <p>
+      <%= text_field :e, :label => "Endurance" %>
+    </p>
+  
+    <p>
+      <%= text_field :pv, :label => "Point Vie" %>
+    </p>
+  
+    <p>
+      <%= text_field :i, :label => "Initiative" %>
+    </p>
+  
+    <p>
+      <%= text_field :a, :label => "Attaque" %>
+    </p>
+  
+    <p>
+      <%= text_field :cd, :label => "Cd" %>
+    </p>
+
+    <%= submit "Créer" %>
+  </p>
 <% end =%>

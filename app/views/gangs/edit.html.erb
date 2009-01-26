@@ -1,44 +1,41 @@
 <h1>Modification gang</h1>
 
-<%= form_for(@gang, :action => resource(:gangs) ) do %>
+<%= form_for(@gang, :action => resource(:gangs)) do %>
 
   <p>
-     <%= @gang.name %>
+    <%= @gang.name %>
 
   </p>
 
   <p>
-     <%= @gang.house  %>
+    <%= @gang.house  %>
   </p>
 
   <p>
   <%= text_area :magot, :label => "Magot" %>
   <p>
+    <%= submit "Modifier" %>
 
-     <table>
-        <thead>
-           <tr>
-              <th>Nom</th>
-              <th>Characteristiques</th>
-              <th>Materiels</th>
-              <th>XP</th>
-              <th>Cout</th>
-           </tr>
-        </thead>
-        <tbody>
-           <% @gang.gangers.each do |ganger| %>
-             <tr>
-                <td><%= ganger.name %></td>
-                <td></td>
-                <td><%= ganger.xp %></td>
-                <td><%= ganger.cost %></td>
-             </tr>
-           <% end %>
-        </tbody>
-     </table>
-     <%= link_to "Ajout d'un ganger", resource(@gang, :gangers, :new) %>
-     <br />
-     <%= submit "Modifie" %>
-  </p>
-<% end =%>
+  <% end =%>
+  <table>
+    <thead>
+      <tr>
+        <th>Nom</th>
+        <th>Characteristiques</th>
+        <th>Modifier</th>
+        <th>Effacer</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @gang.gangers.each do |ganger| %>
+        <tr>
+          <td><%= ganger.name %></td>
+          <td><%= link_to "Modifier", resource(ganger, :edit) %>
+          <td><%= delete_button(ganger, "Effacer") %>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <%= link_to "Ajout d'un ganger", resource(@gang, :gangers, :new) %>
+</p>
 

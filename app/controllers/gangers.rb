@@ -28,12 +28,13 @@ class Gangers < Application
 
   def create(ganger)
     @ganger = Ganger.new(ganger)
+    @gang = Gang.get(params[:gang_id])
     if @ganger.save
       ganger_gang = GangerGang.new
-      ganger_gang.gang_id = params[:gang_id]
+      ganger_gang.gang_id = @gang.id
       ganger_gang.ganger_id =  @ganger.id
       ganger_gang.save
-      redirect resource(@ganger), :message => {:notice => "Ganger was successfully created"}
+      redirect resource(@gang, :edit), :message => {:notice => "Ganger was successfully created"}
     else
       message[:error] = "Ganger failed to be created"
       render :new
@@ -44,7 +45,7 @@ class Gangers < Application
     @ganger = Ganger.get(id)
     raise NotFound unless @ganger
     if @ganger.update_attributes(ganger)
-       redirect resource(@ganger)
+       redirect resource(@ganger.gangs, :edit)
     else
       display @ganger, :edit
     end
@@ -52,9 +53,12 @@ class Gangers < Application
 
   def destroy(id)
     @ganger = Ganger.get(id)
+    gang = @ganger.gangs
+    ganger_gang = @ganger.ganger_gangs
     raise NotFound unless @ganger
     if @ganger.destroy
-      redirect resource(:gangers)
+      ganger_gang.destroy
+      redirect resource(gang, :edit)
     else
       raise InternalServerError
     end

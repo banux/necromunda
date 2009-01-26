@@ -1,4 +1,55 @@
-<h1>Gangers controller, edit action</h1>
+<h1>Modifier ganger <%= @ganger.name %> </h1>
 
-<p>Edit this file in <tt>app/views/gangers/edit.html.erb</tt></p>
-<p>For more information and examples of CRUD views read <a href="http://wiki.merbivore.com/howto/crud_view_example_with_merb_using_erb"> this wiki page</a>
+<%= form_for(@ganger, :action => resource(@ganger) ) do %>
+
+  <p>
+    <%= text_area :equipment, :label => "Equipement" %>
+  </p>
+
+  <p>
+  <%= text_field :xp, :label => "XP" %>
+  <p>
+
+  <p>
+  <%= text_field :cost, :label => "Cout" %>
+  <p>
+
+    <p>
+      <%= text_field :m, :label => "M" %>
+    </p>
+
+    <p>
+      <%= text_field :cc, :label => "CC" %>
+    </p>
+
+    <p>
+      <%= text_field :ct, :label => "CT" %>
+    </p>
+
+    <p>
+      <%= text_field :f, :label => "Force" %>
+    </p>
+
+    <p>
+      <%= text_field :e, :label => "Endurance" %>
+    </p>
+
+    <p>
+      <%= text_field :pv, :label => "Point Vie" %>
+    </p>
+
+    <p>
+      <%= text_field :i, :label => "Initiative" %>
+    </p>
+
+    <p>
+      <%= text_field :a, :label => "Attaque" %>
+    </p>
+
+    <p>
+      <%= text_field :cd, :label => "Cd" %>
+    </p>
+
+    <%= submit "Créer" %>
+  </p>
+<% end =%>

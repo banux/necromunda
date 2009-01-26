@@ -55,5 +55,12 @@ class Gangs < Application
       raise InternalServerError
     end
   end
+  def add_territory(id, territory)
+    @gang = Gang.get(id)
+    raise NotFound unless @gang
+    gang_territory = GangTerritoy.new
+    gang_territory.gang_id = @gang.id
+    gang_territory.territory_id = territory.id
+  end
 
 end # Gangs
