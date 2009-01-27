@@ -39,7 +39,7 @@ class Territories < Application
     @territory = Territory.get(id)
     raise NotFound unless @territory
     if @territory.update_attributes(territory)
-       redirect resource(@territory)
+      redirect resource(@territory)
     else
       display @territory, :edit
     end
@@ -53,6 +53,14 @@ class Territories < Application
     else
       raise InternalServerError
     end
+  end
+
+  def del_from_gang(gang, territory)
+    @gang = Gang.get(gang[:id])
+    raise NotFound unless @gang
+    gang_territory = GangTerritory.first(:gang_id => @gang.id, :territory_id => territory[:id])
+    gang_territory.destroy
+    redirect resource(@gang, :edit)
   end
 
 end # Territories

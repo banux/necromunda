@@ -67,4 +67,5 @@ class Gangs < Application
     redirect resource(@gang, :edit)
   end
 
+
 end # Gangs

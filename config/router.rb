@@ -28,9 +28,14 @@
 Merb.logger.info("Compiling routes...")
 Merb::Router.prepare do
   resources :gangers
-  resources :territories
+  resources :territories do
+    member :del_from_gang, :method => :delete
+  end
   resources :gangs do
     resources :gangers
+    resources :territories do
+      member :del_from_gang, :method => :post
+    end
     member :add_territory, :method => :post
   end
   # RESTful routes

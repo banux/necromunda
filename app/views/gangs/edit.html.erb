@@ -48,11 +48,14 @@
       </tr>
     </thead>
     <tbody>
-      <% @gang.territories.each do |territory| %>
+      <% 
+      @gang.gang_territories.each do |gang_territory|
+      territory = gang_territory.territory
+      %>
         <tr>
           <td><%= territory.name %></td>
           <td><%= territory.income %></td>
-          <td><%= delete_button(territory, "Effacer") %>
+          <td><%= delete_button(resource(@gang, territory, :del_from_gang), "Effacer") %>
         </tr>
       <% end %>
     </tbody>
