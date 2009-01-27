@@ -1,14 +1,14 @@
 <h1>Modification gang</h1>
 
-<%= form_for(@gang, :action => resource(:gangs)) do %>
+<%= form_for(@gang, :action => resource(@gang)) do %>
 
   <p>
-    <%= @gang.name %>
+    <%= text_field :name, :label => "Nom" %>
 
   </p>
 
   <p>
-    <%= @gang.house  %>
+    <%= text_field :house, :label => "Maison" %>
   </p>
 
   <p>
