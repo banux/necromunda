@@ -22,6 +22,7 @@ class Gangs < Application
     only_provides :html
     @gang = Gang.get(id)
     @ganger = Ganger.new
+    @territories = Territory.all
     raise NotFound unless @gang
     display @gang
   end
@@ -55,12 +56,15 @@ class Gangs < Application
       raise InternalServerError
     end
   end
-  def add_territory(id, territory)
+
+  def add_territory(id, gang)
     @gang = Gang.get(id)
     raise NotFound unless @gang
-    gang_territory = GangTerritoy.new
+    gang_territory = GangTerritory.new
     gang_territory.gang_id = @gang.id
-    gang_territory.territory_id = territory.id
+    gang_territory.territory_id = gang[:territory_id]
+    gang_territory.save
+    redirect resource(@gang, :edit)
   end
 
 end # Gangs

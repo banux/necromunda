@@ -39,3 +39,29 @@
   <%= link_to "Ajout d'un ganger", resource(@gang, :gangers, :new) %>
 </p>
 
+  <table>
+    <thead>
+      <tr>
+        <th>Nom</th>
+        <th>Cost</th>
+        <th>Effacer</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @gang.territories.each do |territory| %>
+        <tr>
+          <td><%= territory.name %></td>
+          <td><%= territory.cost %></td>
+          <td><%= delete_button(territory, "Effacer") %>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<p>
+<%= form_for(@gang, :action => resource(@gang, :add_territory), :method => :post) do %>
+<%= select :territory_id, :collection => @territories, :text_method => :name, :value_method => :id, :include_blank => true %>
+<%= submit "Ajouter" %>
+<% end =%>
+</p>
+
+
