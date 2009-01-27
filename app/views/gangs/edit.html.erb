@@ -51,7 +51,7 @@
       <% @gang.territories.each do |territory| %>
         <tr>
           <td><%= territory.name %></td>
-          <td><%= territory.cost %></td>
+          <td><%= territory.income %></td>
           <td><%= delete_button(territory, "Effacer") %>
         </tr>
       <% end %>
