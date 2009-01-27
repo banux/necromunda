@@ -4,7 +4,7 @@ class Territory
   property :id, Serial
 
   property :name, String
-  property :cost, Integer
+  property :income, String
   property :description, Text
 
 end
